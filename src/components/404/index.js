@@ -20,7 +20,7 @@ const NotFound = () => (
 					<i style={{ width: '10px', display: 'inline-block' }} />throw
 				</span>
 				<span>
-					(<span style={{ color: '#a6a61f' }}>{'"(╯°□°)╯︵ ┻━┻"'}</span>);
+					(<span style={{ color: '#a6a61f' }}>&quot;(╯°□°)╯︵ ┻━┻&quot;</span>);
 				</span>
 				<span style={{ display: 'block' }}>{'}'}</span>
 			</span>
