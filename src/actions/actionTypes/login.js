@@ -1,0 +1,3 @@
+export const LOGIN_POST_ON = 'LOGIN_POST_ON';
+export const LOGIN_POST_SUCCESS = 'LOGIN_POST_SUCCESS';
+export const LOGIN_POST_ERROR = 'LOGIN_POST_ERROR';

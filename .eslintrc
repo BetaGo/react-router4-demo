@@ -1,0 +1,16 @@
+{
+  "extends": ["airbnb"],
+  "parser": "babel-eslint",
+  "rules": {
+    "react/jsx-filename-extension": false,
+    "react/jsx-indent": [true, "tab"],
+    "react/jsx-indent-props": [true, "tab"],
+    "no-tabs":"off",
+    "indent": ["error", "tab", { "SwitchCase": 1 }],
+    "function-paren-newline": ["error", "consistent"],
+    "import/prefer-default-export": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "react/prop-types": "off",
+    "react/require-default-props": "off"
+  }
+}

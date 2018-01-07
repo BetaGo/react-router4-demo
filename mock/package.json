@@ -1,0 +1,26 @@
+{
+  "name": "mock",
+  "version": "1.0.0",
+  "description": "just a api mock",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "apis",
+    "mock"
+  ],
+  "author": "gwt",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.14.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  }
+}
