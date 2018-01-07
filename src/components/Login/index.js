@@ -7,6 +7,12 @@ import Avatar from '../common/Avatar';
 class Login extends React.Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
+		this.props.form.validateFields((error, value) => {
+			console.log(error, value);
+			const { actions } = this.props;
+			const { username, password } = value;
+			actions.login(username, password);
+		});
 	}
 	render() {
 		const { getFieldProps } = this.props.form;
@@ -52,7 +58,12 @@ class Login extends React.Component {
 					<WhiteSpace />
 
 					<WingBlank>
-						<Button type="primary">登录</Button>
+						<Button
+							type="primary"
+							onClick={this.handleSubmit}
+						>
+							登录
+						</Button>
 					</WingBlank>
 				</List>
 			</div>
