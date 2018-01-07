@@ -1,10 +1,25 @@
 import React from 'react';
+import { Toast } from 'antd-mobile';
 
-const LoadingPage = (props) => {
-	if (props.error) {
-		return <div>加载出错了</div>;
+class LoadingPage extends React.Component {
+	componentWillUnmount() {
+		Toast.hide();
 	}
-	return <div>加载中。。。</div>;
-};
+	render() {
+		const { error } = this.props;
+		if (error) {
+			return (
+				<div>
+					{Toast.fail('加载失败')}
+				</div>
+			);
+		}
+		return (
+			<div>
+				{Toast.loading('加载中', 0)}
+			</div>
+		);
+	}
+}
 
 export default LoadingPage;
