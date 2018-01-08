@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 
 const user = require('./routes/user');
+const upload = require('./routes/upload');
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../build')));
 
 app.use('/user', user);
+app.use('/upload', upload);
 
 app.use((req, res, next) => {
   const err = new Error('Not Found');

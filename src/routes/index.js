@@ -21,6 +21,9 @@ const AsyncWork = Loadable({
 const AsyncLogin = Loadable({
 	loader: () => import('../containers/Login'),
 });
+const AsyncUpload = Loadable({
+	loader: () => import('../components/Upload'),
+});
 
 const Routes = () => (
 	<div>
@@ -37,6 +40,7 @@ const Routes = () => (
 		/>
 		<Switch>
 			<Route path="/login" component={AsyncLogin} />
+			<Route path="/upload" component={AsyncUpload} />
 			<PrivateRoute path="/home" component={AsyncHome} />
 			<PrivateRoute path="/work" component={AsyncWork} />
 			<Route component={NotFound} />

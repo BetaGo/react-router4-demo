@@ -8,6 +8,7 @@ const App = () => (
 		<Link to="/home">Home</Link>
 		<Link to="/work">work</Link>
 		<Link to="/login">login</Link>
+		<Link to="/upload">upload</Link>
 		<Routes />
 	</div>
 );
