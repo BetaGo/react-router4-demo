@@ -1,6 +1,6 @@
 /* global FormData */
 import React from 'react';
-import { ImagePicker, WingBlank, SegmentedControl, Progress } from 'antd-mobile';
+import { ImagePicker, WingBlank, SegmentedControl, Progress, Toast } from 'antd-mobile';
 import axios from 'axios';
 
 class ImagePickerExample extends React.Component {
@@ -58,6 +58,9 @@ class ImagePickerExample extends React.Component {
 	showProgress = (progressEvent) => {
 		const { loaded, total } = progressEvent;
 		const percent = (loaded / total) * 100;
+		if (percent === 100) {
+			Toast.success('上传成功');
+		}
 		if (percent > 0 && percent < 100) {
 			this.setState({
 				percent,
@@ -87,7 +90,18 @@ class ImagePickerExample extends React.Component {
 					selectable={files.length < 5}
 					multiple={this.state.multiple}
 				/>
-				<input type="button" value="上传" onClick={this.onUpload} />
+				<div
+					onClick={this.onUpload}
+					style={{
+						width: '100px',
+						height: '30px',
+						background: '#aaa',
+						borderRadius: '5px',
+						cursor: 'pointer',
+					}}
+				>
+					上传
+				</div>
 				<div style={{ display: this.state.showProgress ? 'block' : 'none' }}>
 					<Progress percent={this.state.percent} position="fixed" />
 				</div>
