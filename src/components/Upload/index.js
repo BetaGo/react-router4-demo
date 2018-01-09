@@ -1,20 +1,14 @@
 /* global FormData */
 import React from 'react';
-import { ImagePicker, WingBlank, SegmentedControl, Button } from 'antd-mobile';
+import { ImagePicker, WingBlank, SegmentedControl, Progress } from 'antd-mobile';
 import axios from 'axios';
-
-const data = [{
-	url: 'https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg',
-	id: '2121',
-}, {
-	url: 'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg',
-	id: '2122',
-}];
 
 class ImagePickerExample extends React.Component {
 	state = {
-		files: data,
+		files: [],
 		multiple: false,
+		showProgress: false,
+		percent: 0,
 	}
 	onChange = (files, type, index) => {
 		console.log(files, type, index);
@@ -47,12 +41,33 @@ class ImagePickerExample extends React.Component {
 				headers: {
 					'Content-Type': 'multipart/form-data',
 				},
+				onUploadProgress: (progressEvent) => {
+					if (progressEvent.lengthComputable) {
+						this.showProgress(progressEvent);
+					}
+				},
 			});
 			if (String(response.data.status) === '1') {
-				console.log('上传成功');
+				console.log('上传成功Lee乐乐乐');
 			}
 		} catch (e) {
 			console.log(e);
+		}
+	}
+
+	showProgress = (progressEvent) => {
+		const { loaded, total } = progressEvent;
+		const percent = (loaded / total) * 100;
+		if (percent > 0 && percent < 100) {
+			this.setState({
+				percent,
+				showProgress: true,
+			});
+		} else {
+			this.setState({
+				percent: 0,
+				showProgress: false,
+			});
 		}
 	}
 
@@ -72,7 +87,10 @@ class ImagePickerExample extends React.Component {
 					selectable={files.length < 5}
 					multiple={this.state.multiple}
 				/>
-				<Button onClick={this.onUpload}>上传</Button>
+				<input type="button" value="上传" onClick={this.onUpload} />
+				<div style={{ display: this.state.showProgress ? 'block' : 'none' }}>
+					<Progress percent={this.state.percent} position="fixed" />
+				</div>
 			</WingBlank>
 		);
 	}
